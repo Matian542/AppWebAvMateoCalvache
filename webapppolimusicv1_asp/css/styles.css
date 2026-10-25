@@ -1,0 +1,508 @@
+/* =====================================================================
+   PoliMusic - Hoja de estilos
+   Paleta: morado oscuro #1E1B3A, coral #FF6B6B, turquesa #2EC4B6
+   Tipografías: Outfit (títulos) y DM Sans (texto) de Google Fonts
+   ===================================================================== */
+
+:root {
+    --bg: #1E1B3A;
+    --bg-deep: #16132C;
+    --surface: #282451;
+    --surface-2: #322D63;
+    --border: rgba(255, 255, 255, 0.09);
+    --text: #F4F1FF;
+    --muted: #A9A3C9;
+    --coral: #FF6B6B;
+    --coral-dark: #E85555;
+    --teal: #2EC4B6;
+    --teal-dark: #23A699;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 18px 40px rgba(8, 6, 24, 0.45);
+    --font-title: "Outfit", system-ui, sans-serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background:
+        radial-gradient(900px 500px at 100% -10%, rgba(46, 196, 182, 0.14), transparent 60%),
+        radial-gradient(700px 420px at -10% 10%, rgba(255, 107, 107, 0.12), transparent 60%),
+        var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    line-height: 1.15;
+    margin: 0 0 0.4em;
+}
+
+a { color: var(--teal); }
+img { max-width: 100%; display: block; }
+code {
+    background: var(--bg-deep);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+.muted { color: var(--muted); font-weight: 400; }
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: 600 0.95rem var(--font-body);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+
+.btn-primary   { background: var(--coral); color: #1E1B3A; }
+.btn-primary:hover { background: var(--coral-dark); }
+.btn-secondary { background: var(--teal); color: #10213A; }
+.btn-secondary:hover { background: var(--teal-dark); }
+.btn-danger    { background: transparent; color: var(--coral); border-color: var(--coral); }
+.btn-danger:hover { background: var(--coral); color: #1E1B3A; }
+.btn-ghost     { background: transparent; color: var(--text); border-color: var(--border); }
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+.btn-sm    { padding: 6px 14px; font-size: 0.85rem; }
+.btn-block { width: 100%; }
+
+/* ---------- Marca ---------- */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    text-decoration: none;
+}
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--coral), var(--teal));
+    color: var(--bg);
+}
+.brand-name {
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.brand-name strong { color: var(--coral); font-weight: 800; }
+.brand-lg .brand-mark { width: 46px; height: 46px; }
+.brand-lg .brand-name { font-size: 1.7rem; }
+
+/* ---------- Encabezado ---------- */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px clamp(16px, 4vw, 40px);
+    background: rgba(22, 19, 44, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.user-photo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--teal);
+    background: var(--surface);
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+.user-greeting { font-size: 0.95rem; }
+.role-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1px 8px;
+    border-radius: 999px;
+}
+.role-admin { background: rgba(255, 107, 107, 0.16); color: var(--coral); }
+.role-user  { background: rgba(46, 196, 182, 0.16); color: var(--teal); }
+
+/* ---------- Contenedores ---------- */
+.container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px clamp(16px, 4vw, 40px) 48px;
+    flex: 1;
+}
+.container-narrow { max-width: 680px; }
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: clamp(16px, 3vw, 28px);
+    box-shadow: var(--shadow);
+}
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.panel-head h2 { margin: 0; font-size: 1.4rem; }
+.panel-head h2 .muted { font-size: 0.95rem; font-family: var(--font-body); }
+
+.empty { color: var(--muted); text-align: center; padding: 32px 0; }
+
+/* ---------- Banner (hero) ---------- */
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: clamp(20px, 4vw, 36px);
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, rgba(255, 107, 107, 0.18), rgba(46, 196, 182, 0.12)), var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+.eyebrow {
+    margin: 0 0 6px;
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+.hero-title {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 800;
+    margin: 0;
+}
+.hero-sub { color: var(--muted); margin: 6px 0 16px; }
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.stats li {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(30, 27, 58, 0.6);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+.stats strong { color: var(--coral); font-family: var(--font-title); font-size: 1.05rem; }
+
+/* Portadas en abanico */
+.hero-covers {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+.hero-covers img {
+    width: clamp(70px, 11vw, 120px);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid var(--bg);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    margin-left: -26px;
+    transition: transform 0.25s ease;
+}
+.hero-covers img:first-child { margin-left: 0; }
+.hero-covers img:nth-child(odd)  { transform: rotate(-6deg); }
+.hero-covers img:nth-child(even) { transform: rotate(5deg) translateY(10px); }
+.hero-covers img:hover { transform: rotate(0) translateY(-8px) scale(1.06); z-index: 1; }
+
+/* ---------- Tabla de canciones ---------- */
+.table-wrap { overflow-x: auto; }
+
+.song-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+.song-table th {
+    text-align: left;
+    padding: 12px 14px;
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--coral);
+    white-space: nowrap;
+}
+.song-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+.song-table tbody tr { transition: background-color 0.2s ease, box-shadow 0.2s ease; }
+.song-table tbody tr:hover { background: var(--surface-2); }
+
+/* Fila de la canción que se está reproduciendo (la marca app.js) */
+.song-table tbody tr.is-playing {
+    background: rgba(46, 196, 182, 0.14);
+    box-shadow: inset 4px 0 0 var(--teal);
+}
+.song-table tbody tr.is-playing .song-name { color: var(--teal); }
+
+.col-num   { width: 56px; color: var(--muted); font-family: var(--font-title); }
+.col-plays { text-align: right; font-variant-numeric: tabular-nums; }
+.song-name { font-weight: 700; }
+
+.col-player audio {
+    width: 260px;
+    max-width: 100%;
+    height: 36px;
+    display: block;
+}
+.tag-missing {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+.tag-missing::before { content: "● "; color: var(--coral); }
+
+.col-actions { white-space: nowrap; }
+.col-actions .btn + .inline-form { margin-left: 6px; }
+.inline-form { display: inline; margin: 0; }
+
+/* ---------- Alertas ---------- */
+.alert {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+.alert-error   { background: rgba(255, 107, 107, 0.14); border-color: rgba(255, 107, 107, 0.4); color: #FFB3B3; }
+.alert-success { background: rgba(46, 196, 182, 0.14); border-color: rgba(46, 196, 182, 0.4); color: #9BEDE4; }
+
+/* ---------- Formularios ---------- */
+.form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: 600; font-size: 0.92rem; }
+.field input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-deep);
+    color: var(--text);
+    font: 1rem var(--font-body);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.25);
+}
+.hint { color: var(--muted); font-size: 0.82rem; }
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+.form-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+.form-panel-head img {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid var(--coral);
+}
+.form-panel-head h1 { font-size: 1.6rem; margin: 0; }
+.form-panel-head p { margin: 4px 0 0; }
+
+/* ---------- Login ---------- */
+.page-login { justify-content: center; }
+.login-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    gap: 32px;
+    align-items: center;
+}
+.login-art { text-align: center; }
+.cover-stack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 380px;
+    margin: 0 auto 24px;
+}
+.cover-stack img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+.cover-stack img:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.cover-stack img:nth-child(2) { transform: rotate(4deg); }
+.cover-stack img:nth-child(3) { transform: rotate(-4deg); }
+.login-tagline {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+}
+.login-tagline span { color: var(--teal); }
+
+.login-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: clamp(24px, 4vw, 40px);
+    box-shadow: var(--shadow);
+}
+.login-card .brand { margin-bottom: 24px; }
+.login-card h1 { font-size: 1.9rem; margin-bottom: 4px; }
+.login-card > .muted { margin: 0 0 22px; }
+
+/* ---------- Página de error de conexión ---------- */
+.page-error { justify-content: center; align-items: center; padding: 16px; }
+.error-box {
+    max-width: 560px;
+    background: var(--surface);
+    border: 1px solid var(--coral);
+    border-radius: var(--radius);
+    padding: 28px;
+}
+.error-box pre {
+    white-space: pre-wrap;
+    background: var(--bg-deep);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    color: #FFB3B3;
+    font-size: 0.85rem;
+}
+
+/* ---------- Pie ---------- */
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 20px 16px 28px;
+}
+
+/* =====================================================================
+   Responsive
+   ===================================================================== */
+@media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-covers { justify-content: flex-start; }
+    .login-layout { grid-template-columns: 1fr; max-width: 460px; }
+    .login-art { display: none; }
+}
+
+/* En pantallas pequeñas cada fila de la tabla se muestra como tarjeta */
+@media (max-width: 760px) {
+    .user-greeting { font-size: 0.85rem; }
+    .user-box { width: 100%; justify-content: space-between; }
+    .user-info { margin-right: auto; }
+
+    .song-table thead { display: none; }
+    .song-table,
+    .song-table tbody,
+    .song-table tr,
+    .song-table td { display: block; width: 100%; }
+
+    .song-table tbody tr {
+        margin-bottom: 14px;
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--surface-2);
+    }
+    .song-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 0;
+        text-align: right;
+    }
+    .song-table td:last-child { border-bottom: none; }
+    .song-table td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-align: left;
+        flex-shrink: 0;
+    }
+    .col-num { width: 100%; }
+    .col-player { flex-wrap: wrap; }
+    .col-player audio { width: 100%; }
+    .col-player::before { width: 100%; }
+    .tag-missing { margin-left: auto; }
+}
