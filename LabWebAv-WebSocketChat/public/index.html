@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EPN FIS Chat WebSocket</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>EPN FIS Chat WebSocket</h1>
+        <div class="meta">
+          <span id="status" class="status bad">Desconectado</span>
+          <span id="users">Usuarios: 0</span>
+        </div>
+      </div>
+      <button id="themeToggle" type="button">Modo oscuro</button>
+    </header>
+
+    <div class="identity">
+      <input id="username" placeholder="Tu nombre" maxlength="40" />
+      <button id="join" type="button">Unirme</button>
+    </div>
+
+    <div id="chat" aria-live="polite"></div>
+    <div id="typing"></div>
+
+    <div class="composer">
+      <input id="message" placeholder="Escribe un mensaje..." maxlength="300" />
+      <button id="send" type="button">Enviar</button>
+    </div>
+  </div>
+
+  <script src="/js/chat.js"></script>
+</body>
+</html>
